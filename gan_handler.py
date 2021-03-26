@@ -70,7 +70,7 @@ class ModelHandler(BaseHandler):
         self.manifest = context.manifest
 
         # load model
-        model_pt_path = "/home/ubuntu/murata/Server/ganserve/serve/cyclegan_generator_a2b.pth"  # generator weight
+        model_pt_path = "/Users/tatsuro/Dopcuments/Media2CloudTutorial/Server/cycleganserve/serve/cyclegan_generator_a2b.pth"  # generator weight
         self.model = Generator()
         self.model.load_state_dict(torch.load(model_pt_path, map_location=self.map_location))
         self.model.to(self.device)
