@@ -70,7 +70,7 @@ class ModelHandler(BaseHandler):
         self.manifest = context.manifest
 
         # load model
-        model_pt_path = "/Users/tatsuro/Dopcuments/Media2CloudTutorial/Server/cycleganserve/serve/cyclegan_generator_a2b.pth"  # generator weight
+        model_pt_path = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"  # generator weight
         self.model = Generator()
         self.model.load_state_dict(torch.load(model_pt_path, map_location=self.map_location))
         self.model.to(self.device)
@@ -133,12 +133,13 @@ class ModelHandler(BaseHandler):
         """
         postprocess_output = inference_output
         # convert results into json format
-        file_name = "/home/ubuntu/murata/Server/ganserve/serve/image_dir/{}".format(self.image_filename)
+        file_name = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
         save_image(postprocess_output, file_name)
 
         
         # s3 upload
-        json_format = self.upload_file(file_name, self.bucket, object_name=None)
+        # json_format = self.upload_file(file_name, self.bucket, object_name=None)
+        json_format = {"result": 0.99}
 
         return json_format
 
