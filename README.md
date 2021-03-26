@@ -1,9 +1,4 @@
 # Media2Cloud
-# access key
-Access Key ID:AKIAWQHHMMGWTSSDTAOA
-Secret access Key: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
-access console:https://447161852333.signin.aws.amazon.com/console
-
 # EndPoint
 https://8rsjf9kpd9.execute-api.us-east-1.amazonaws.com/demo
 
