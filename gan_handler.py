@@ -70,7 +70,9 @@ class ModelHandler(BaseHandler):
         self.manifest = context.manifest
 
         # load model
-        model_pt_path = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"  # generator weight
+        # ToDo: you have to change absolute path for weight file
+        # model_pt_path = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"  # generator weight
+        model_pt_path = "/home/ubuntu/murata/Media2Cloud/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"
         self.model = Generator()
         self.model.load_state_dict(torch.load(model_pt_path, map_location=self.map_location))
         self.model.to(self.device)
@@ -133,13 +135,17 @@ class ModelHandler(BaseHandler):
         """
         postprocess_output = inference_output
         # convert results into json format
-        file_name = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
+
+        # ToDo: change absolute path for image dir
+        # file_name = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
+        file_name = "/home/ubuntu/murata/Media2Cloud/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
         save_image(postprocess_output, file_name)
 
         
         # s3 upload
         # json_format = self.upload_file(file_name, self.bucket, object_name=None)
-        json_format = {"result": 0.99}
+        url = "https://{}.s3.amazonaws.com/{}".format(self.bucket, self.image_filename)
+        json_format = {"result": 0.99, "url": url}
 
         return json_format
 
