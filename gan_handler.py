@@ -71,8 +71,8 @@ class ModelHandler(BaseHandler):
 
         # load model
         # ToDo: you have to change absolute path for weight file
-        # model_pt_path = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"  # generator weight
-        model_pt_path = "/home/ubuntu/murata/Media2Cloud/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"
+        model_pt_path = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"  # generator weight
+        # model_pt_path = "/home/ubuntu/murata/Media2Cloud/Server/cycleganserve/serve/examples/cycleganserve/cyclegan_generator_a2b.pth"
         self.model = Generator()
         self.model.load_state_dict(torch.load(model_pt_path, map_location=self.map_location))
         self.model.to(self.device)
@@ -137,8 +137,8 @@ class ModelHandler(BaseHandler):
         # convert results into json format
 
         # ToDo: change absolute path for image dir
-        # file_name = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
-        file_name = "/home/ubuntu/murata/Media2Cloud/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
+        file_name = "/Users/tatsuro/Documents/Media2CloudTutorial/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
+        # file_name = "/home/ubuntu/murata/Media2Cloud/Server/cycleganserve/serve/image_dir/{}".format(self.image_filename)
         save_image(postprocess_output, file_name)
 
         
