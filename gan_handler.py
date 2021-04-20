@@ -143,9 +143,9 @@ class ModelHandler(BaseHandler):
 
         
         # s3 upload
-        # json_format = self.upload_file(file_name, self.bucket, object_name=None)
-        url = "https://{}.s3.amazonaws.com/{}".format(self.bucket, self.image_filename)
-        json_format = {"result": 0.99, "url": url}
+        json_format = self.upload_file(file_name, self.bucket, object_name=None)
+        # url = "https://{}.s3.amazonaws.com/{}".format(self.bucket, self.image_filename)
+        # json_format = {"result": 0.99, "url": url}
 
         return json_format
 
